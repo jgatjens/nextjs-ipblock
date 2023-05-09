@@ -9,6 +9,8 @@ export default async function (req: NextRequest) {
     ip = forwardedFor.split(",").at(0) ?? "Unknown";
   }
 
+  console.log("Your IP: ", ip);
+
   if (ip) {
     res.cookies.set("user-ip", ip, {
       httpOnly: false,
