@@ -21,7 +21,7 @@ export default async function (req: NextRequest) {
     });
   }
 
-  return NextResponse.next();
+  return res;
 }
 
 export const config = {
