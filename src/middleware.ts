@@ -1,3 +1,4 @@
+import { redirect } from "next/dist/server/api-utils";
 import { NextRequest, NextResponse } from "next/server";
 
 // eslint-disable-next-line
@@ -9,7 +10,10 @@ export default async function (req: NextRequest) {
     ip = forwardedFor.split(",").at(0) ?? "Unknown";
   }
 
-  console.log("Your IP: ", ip);
+  if (ip === "201.192.155.24") {
+    console.log("redirecting", ip);
+    // redirect("/404");
+  }
 
   if (ip) {
     res.cookies.set("user-ip", ip, {
