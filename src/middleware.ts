@@ -11,7 +11,9 @@ export default async function (req: NextRequest) {
   }
 
   if (ip === "201.192.155.24") {
-    console.log("redirecting", ip);
+    const url = req.nextUrl.clone();
+    url.pathname = `/404`;
+    return NextResponse.rewrite(url);
     // redirect("/404");
   }
 
