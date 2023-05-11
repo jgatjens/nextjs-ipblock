@@ -1,7 +1,8 @@
 import { redirect } from "next/dist/server/api-utils";
 import { NextRequest, NextResponse } from "next/server";
 
-const blockedIps = ["32.220.59.105", "201.192.155.24"];
+// 45.42.61.18
+// const blockedIps = ["32.220.59.105", "201.192.155.24"];
 
 // eslint-disable-next-line
 export default async function (req: NextRequest) {
@@ -12,7 +13,7 @@ export default async function (req: NextRequest) {
     ip = forwardedFor.split(",").at(0) ?? "Unknown";
   }
 
-  if (ip && blockedIps.includes(ip)) {
+  if (ip !== "45.42.61.18") {
     const url = req.nextUrl.clone();
     url.pathname = `/404`;
     return NextResponse.rewrite(url);
